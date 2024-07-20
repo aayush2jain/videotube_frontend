@@ -4,12 +4,12 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Homepage = () => {
   const navigate = useNavigate();
-  const [userData, setUserData] = useState(null);
-  const [userName, setUserName] = useState(null);
+  const [userData, setUserData] = useState("");
+  const [userName, setUserName] = useState("");
   const [fullName, setFullName] = useState('name');
-  const [following, setFollowing] = useState(null);
-  const [follower, setFollower] = useState(null);
-  const [picture, setPicture] = useState(null);
+  const [following, setFollowing] = useState("");
+  const [follower, setFollower] = useState("");
+  const [picture, setPicture] = useState("");
   const [videos, setVideos] = useState([]);
   const [id, setid] = useState("");
   // const [owner,setowner] = useState();
@@ -18,7 +18,7 @@ const Homepage = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get('/user/getuser');
-        console.log('response', response.data);
+        console.log('response', response);
         setUserData(response.data.data.email);
         setUserName(response.data.data.username);
         setid(response.data.data._id);
