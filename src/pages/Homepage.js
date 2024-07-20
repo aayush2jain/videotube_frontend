@@ -17,7 +17,7 @@ const Homepage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/user/getuser');
+        const response = await axios.get('https://videohub-backend-nine.vercel.app/user/getuser');
         console.log('response', response);
         setUserData(response.data.data.email);
         setUserName(response.data.data.username);
