@@ -15,13 +15,14 @@ const Homepage = () => {
   // const [owner,setowner] = useState();
 
   useEffect(() => {
+
     const fetchData = async () => {
       try {
-        const response = await axios.get('/user/getuser');
+        const response = await axios.get('/user/getuser')
         console.log('response', response);
-        setUserData(response.data.data.email);
-        setUserName(response.data.data.username);
-        setid(response.data.data._id);
+        setUserData(response.data.email);
+        setUserName(response.data.username);
+        setid(response.data._id);
       } catch (error) {
         console.error(error);
       }
