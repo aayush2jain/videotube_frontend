@@ -17,7 +17,11 @@ const Login = () => {
 
        
         try {
-            const response=await axios.post("/user/", formData, {
+            const response=await axios.post("/user/", {
+                email,
+                username,
+                password
+            }, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
