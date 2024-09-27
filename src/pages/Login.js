@@ -24,7 +24,8 @@ const Login = () => {
             }, {
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                withCredentials: true // Include cookies
             });
              if(response.status===299){
                 setmessage(response.data.message)

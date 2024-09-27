@@ -18,7 +18,9 @@ const Homepage = () => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://backend-five-zeta-26.vercel.app/user/getuser')
+        const response = await axios.get('https://backend-five-zeta-26.vercel.app/user/getuser',{
+          withCredentials: true // Include cookies
+        })
         console.log('response', response);
         setUserData(response.data.email);
         setUserName(response.data.username);
@@ -35,7 +37,9 @@ const Homepage = () => {
     const fetchUserData = async () => {
       if (id) {
         try {
-          const response = await axios.get(`https://backend-five-zeta-26.vercel.app/user/c/${id}`);
+          const response = await axios.get(`https://backend-five-zeta-26.vercel.app/user/c/${id}`,{
+            withCredentials: true // Include cookies
+          });
           console.log('hello', response);
 
           setUserName(response.data.data.username);
