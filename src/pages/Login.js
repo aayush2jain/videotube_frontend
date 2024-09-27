@@ -17,7 +17,7 @@ const Login = () => {
 
        
         try {
-            const response=await axios.post("/user/", {
+            const response=await axios.post("https://backend-five-zeta-26.vercel.app/user/", {
                 email,
                 username,
                 password
