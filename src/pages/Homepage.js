@@ -18,7 +18,7 @@ const Homepage = () => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get('/user/getuser')
+        const response = await axios.get('https://backend-five-zeta-26.vercel.app/user/getuser')
         console.log('response', response);
         setUserData(response.data.email);
         setUserName(response.data.username);
@@ -35,7 +35,7 @@ const Homepage = () => {
     const fetchUserData = async () => {
       if (id) {
         try {
-          const response = await axios.get(`/user/c/${id}`);
+          const response = await axios.get(`https://backend-five-zeta-26.vercel.app/user/c/${id}`);
           console.log('hello', response);
 
           setUserName(response.data.data.username);
@@ -57,7 +57,7 @@ const Homepage = () => {
   useEffect(() => {
     const getAllVideos = async () => {
       try {
-        const response = await axios.get('/video/all');
+        const response = await axios.get('https://backend-five-zeta-26.vercel.app/video/all');
         console.log('data', response.data.videos);
         setVideos(response.data.videos);
         console.log(videos)
