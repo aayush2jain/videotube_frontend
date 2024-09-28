@@ -61,7 +61,9 @@ const Homepage = () => {
   useEffect(() => {
     const getAllVideos = async () => {
       try {
-        const response = await axios.get('https://backend-five-zeta-26.vercel.app/video/all');
+        const response = await axios.get('https://backend-five-zeta-26.vercel.app/video/all',{
+            withCredentials: true // Include cookies
+          });
         console.log('data', response.data.videos);
         setVideos(response.data.videos);
         console.log(videos)
