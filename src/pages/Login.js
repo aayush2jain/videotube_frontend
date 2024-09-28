@@ -9,38 +9,32 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [message, setmessage] = useState("");
     const submit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append('email', email);
-        formData.append('username', username);
-        formData.append('password', password);
-
-       
-        try {
-            const response=await axios.post("https://backend-five-zeta-26.vercel.app/user/", {
-                email,
-                username,
-                password
-            }, {
+    e.preventDefault();
+    try {
+        const response = await axios.post(
+            "https://backend-five-zeta-26.vercel.app/user/",
+            { email, password },
+            {
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 withCredentials: true // Include cookies
-            });
-             if(response.status===299){
-                setmessage(response.data.message)
-                console.log(message)
-                navigate('/')
-             }
-             else
+            }
+        );
 
-             {  console.log(response)
-                navigate('/home');}
-           
-        } catch (error) {
-            console.log(error);
+        if (response.status === 299) {
+            setmessage(response.data.message);
+        } else if (response.status === 200) {
+            setmessage('');
+            console.log('Cookies:', document.cookie); // Log cookies
+            navigate('/home'); // Redirect on successful login
         }
-    };
+    } catch (error) {
+        console.error('Login Error: ', error);
+        setmessage('Login failed. Please check your credentials.');
+    }
+};
+
 
   return (
     <>
