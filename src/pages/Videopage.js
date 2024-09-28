@@ -22,10 +22,11 @@ const Videopage = () => {
         const formData = new FormData();
         formData.append('content',content);       
         try {
-            await axios.post(`/comment/c/${videoId}`, formData, {
+            await axios.post(`https://backend-five-zeta-26.vercel.app/comment/c/${videoId}`, formData, {
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                withCredentials: true // Include cookies
             });
             setcontent("   ");
             // navigate('/home');
@@ -38,10 +39,11 @@ const Videopage = () => {
         if(flag)
         {
         try {
-            await axios.post(`/sub/c/${videoId}`, {
+            await axios.post(`https://backend-five-zeta-26.vercel.app/sub/c/${videoId}`, {
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                withCredentials: true // Include cookies
             });
             setsub("subscribed");
            setflag(false);
@@ -62,7 +64,9 @@ const Videopage = () => {
     useEffect(()=>{
         const getvideo= async()=>{
         try {
-          const response = await axios.get(`/video/c/${id}`);
+          const response = await axios.get(`https://backend-five-zeta-26.vercel.app/video/c/${id}`,{
+            withCredentials: true // Include cookies
+          });
           console.log('bhai videodetails', response);
           console.log('video',response.data[0].videoFile)
           seturl(response.data[0].videoFile);
@@ -85,7 +89,9 @@ const Videopage = () => {
       useEffect(() => {
     const getAllVideos = async () => {
       try {
-        const response = await axios.get('/video/all');
+        const response = await axios.get('https://backend-five-zeta-26.vercel.app/video/all',{
+          withCredentials: true // Include cookies
+        });
         console.log('data', response.data.videos);
         setVideos(response.data.videos);
         console.log(videos)
@@ -100,7 +106,9 @@ const Videopage = () => {
         useEffect(()=>{
         const getcomment= async()=>{
         try {
-          const response = await axios.get(`/comment/video/c/${id}`);
+          const response = await axios.get(`https://backend-five-zeta-26.vercel.app/comment/video/c/${id}`,{
+            withCredentials: true // Include cookies
+          });
           console.log('bhai commentdetailsdetails', response);
           console.log('video',response.data)
           setcomment(response.data);

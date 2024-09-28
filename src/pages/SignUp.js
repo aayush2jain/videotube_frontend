@@ -25,10 +25,11 @@ const Signup = () => {
         formData.append('avatar', avatar);
 
         try {
-            const request=await axios.post("/user/register", formData, {
+            const request=await axios.post("https://backend-five-zeta-26.vercel.app/user/register", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
-                }
+                },
+                withCredentials: true // Include cookies
             })
             if(request.status===200){
               

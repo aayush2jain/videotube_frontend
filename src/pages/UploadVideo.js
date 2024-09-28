@@ -24,10 +24,11 @@ const VideoUploadForm = () => {
     formData.append('thumbnail', thumbnail);
 
     try {
-      await axios.post("/video/upload", formData, {
+      await axios.post("https://backend-five-zeta-26.vercel.app/video/upload", formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
-        }
+        },
+        withCredentials: true // Include cookies
       });
       navigate('/home');
     } catch (error) {
