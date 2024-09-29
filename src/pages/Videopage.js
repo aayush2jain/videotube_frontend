@@ -124,7 +124,7 @@ const Videopage = () => {
         }
     }
     getcomment()
-    },[id])
+    },[id,comments])
     console.log("location",id);
 
   return (
@@ -141,8 +141,8 @@ const Videopage = () => {
         <div className='justify-center content-center font-semibold'>
         <h1>@{username}</h1>
         </div>
-        <button onClick={subscribe} className='rounded-3xl h-[8vh] px-1 bg-red-500 content-center justify-center font-semibold  '>
-          {sub}</button>
+        {/* <button onClick={subscribe} className='rounded-3xl h-[8vh] px-1 bg-red-500 content-center justify-center font-semibold  '>
+          {sub}</button> */}
         </div>
       {/* <h1>views:{views}</h1> */}
       <div className='bg-slate-900 rounded-xl p-2'>

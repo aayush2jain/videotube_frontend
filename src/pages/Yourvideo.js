@@ -32,7 +32,7 @@ const Yourvideo = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className='flex flex-wrap bg-black text-white justify-around pb-[10vh]'>
+    <div className='flex md:flex-wrap flex-col bg-black text-white justify-around pb-[10vh]'>
     
         {videos.map((video, index) => (
           <div key={index} className='h-[30vh] w-[20vw] bg-black rounded-2xl my-10 ' onClick={()=>handleVideoClick(video._id)}>

@@ -38,15 +38,15 @@ const Login = () => {
 
   return (
     <>
-      <div className='w-[100vw] h-[100vh] bg-black'>
-            <div className='w-[30vw] h-[50vh] rounded-3xl flex flex-col absolute top-[30vh] left-[40vw] bg-white'>
-                <h1 className='mt-[8vh] font-semibold my-4 text-xl mx-[3.5vw]'>Log In</h1>
-                <form onSubmit={submit}>
-                    {/* <input type='text' placeholder='UserName' onChange={(e) => setUsername(e.target.value)} className='py-[2vh] mb-[2vh] mx-[2.5vw] pl-4 rounded-xl bg-gray-200' /> */}
-                    <input type='email' placeholder='Email' onChange={(e) => setEmail(e.target.value)} className='py-[2vh] mb-[2vh] mx-[2.5vw] pl-4 rounded-xl bg-gray-200' />
-                    <input type='password' placeholder='Password' onChange={(e) => setPassword(e.target.value)} className='py-[2vh] mb-[2vh] mx-[2.5vw] pl-4 rounded-xl bg-gray-200' />
+      <div className='w-[100vw] h-[100vh] bg-black flex items-center justify-center'>
+            <div className='md:w-[30vw] h-[60vh] w-[80vw] md:h-[60vh] rounded-3xl flex flex-col bg-white'>
+                <h1 className='md:mt-[8vh] mt-[4vh]  my-4 text-xl  md:ml-[11vw] ml-[27vw] font-bold'>LOG IN</h1>
+                <form onSubmit={submit} encType='multipart/form-data' className='mx-auto'>
+                    {/* <input type='text' placeholder='UserName' onChange={(e) => setUsername(e.target.value)} className='py-[2vh] w-[10vw] mb-[2vh] mx-[2.5vw] sm:pl-4 rounded-xl bg-gray-200' /> */}
+                    <input type='email' placeholder='Email' onChange={(e) => setEmail(e.target.value)} className='py-[2vh] md:w-[20vw] w-[60vw] md:h-[4vw] h-[8vh]  md:mb-[3vh] mb-[4vh] md:ml-[4.5vw] ml-[8vw] pl-4 rounded-xl bg-gray-200' />
+                    <input type='password' placeholder='Password' onChange={(e) => setPassword(e.target.value)} className='py-[2vh]  md:w-[20vw]  w-[60vw] md:h-[4vw] h-[8vh]  md:mb-[23h] mb-[4vh] md:ml-[4.5vw]  ml-[8vw]  pl-4 rounded-xl bg-gray-200' />
                    
-                    <button type='submit' className='width-[10vw] mx-[2.5vw] py-3 bg-black text-white text-xl rounded-xl'>Log In</button>
+                    <button type='submit' className='width-[10vw] px-[2vw] md:ml-[10vw] ml-[26vw] py-3 bg-black text-white text-xl rounded-xl'>Log In</button>
                 </form>
                 {/* <div className='flex flex-row rounded-xl border-black border-2 w-[25vw] ml-[2.5vw] mt-2'>
                     <div className="mt-6 ml-[5vw]">
@@ -54,8 +54,7 @@ const Login = () => {
                     </div>
                     <button type='button' className='width-[10vw] mr-[2.5vw] py-3 text-xl mt-[2vh]'>Continue using Google</button>
                 </div> */}
-                <a href="/signup" className='text-center mt-1 underline text-black decoration-black'>not Registered? Sign in</a>
-                <h1 className='text-center text-red-600 font-semibold'>{message}</h1>
+                <a href="/signup" className='text-center mt-1 underline text-black decoration-black'>Already Registered? Signup </a>
             </div>
         </div>
     </>
