@@ -8,7 +8,9 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setmessage] = useState("");
+    const [loading, setloading] = useState(false);
     const submit = async (e) => {
+    setloading(true);
     e.preventDefault();
     try {
         const response = await axios.post(
@@ -55,6 +57,15 @@ const Login = () => {
                     <button type='button' className='width-[10vw] mr-[2.5vw] py-3 text-xl mt-[2vh]'>Continue using Google</button>
                 </div> */}
                 <a href="/signup" className='text-center mt-1 underline text-black decoration-black'>Already Registered? Signup </a>
+                <h1 className='text-center text-red-600 font-semibold'>{message}</h1>
+                {
+                   loading &&(
+                    <>
+                    <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>
+                    <h1 className='text-center'>logging in please wait...</h1>
+                    </>
+                   )
+                }
             </div>
         </div>
     </>
