@@ -109,7 +109,7 @@ const Homepage = () => {
           <button className='hover:text-blue-500' onClick={logout}>Log Out</button>
         </div>
       </div>
-      <div className='flex md:flex-wrap flex-col justify-evenly text-center bg-black text-white h-full pb-[10vh]'>
+      <div className='flex md:flex-wrap flex-nowrap md:flex-row flex-col justify-evenly text-center bg-black text-white h-full pb-[10vh]'>
         {videos.map((video, index) => (
           <div key={index} onClick={()=>handleVideoClick(video._id)} className='h-[30vh] w-[20vw] hover:cursor-pointer my-10'>
             <img src={video.thumbnail} alt="" className='h-[30vh] w-[20vw] rounded-2xl'></img>
