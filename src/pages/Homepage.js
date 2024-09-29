@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-
+import { RiUpload2Fill, RiVideoUploadFill } from "react-icons/ri";
+import { MdVideoCameraFront } from "react-icons/md";
+import { IoIosLogOut } from "react-icons/io";
 const Homepage = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState("");
@@ -90,29 +92,27 @@ const Homepage = () => {
   }
   return (
     <>
-      <div className='h-[30vh] w-full bg-slate-200 text-white flex flex-row'>
-        <div className='h-[30vh] w-[30vw] bg-slate-900 '>
-          <div className='h-[30vh] w-[30vh] rounded-full overflow-hidden ml-[10vw]'>
-            <img src={picture} className='object-contain rounded-full' alt='' />
+      <div>
+      <div className='h-[7vh] w-full bg-black' >
+      <div className='h-[6vh] sm:w-[60vw] md:w-[40vw] md:ml-[30vw] sm:mx-[20vw] mx-[5vw] w-[90vw] fixed bg-black/50 text-gray-300 rounded-r-3xl rounded-l-3xl pl-[5vw] flex gap-[5vw] font-semibold mb-[1vh] '>
+        <div className='flex  hover:text-blue-500  ' onClick={()=>navigate('/upload')}>
+          <RiUpload2Fill className='h-[6vh] text-2xl hover:cursor-pointer hover:text-blue-500  '></RiUpload2Fill>
+          <button className='hover:text-blue-500 p-0 m-0' >Upload</button>
+        </div>
+        <div className='flex  hover:text-blue-500  ' onClick={()=>navigate('/yourvideo')}>
+          <MdVideoCameraFront className='h-[6vh] text-2xl hover:text-blue-500  hover:cursor-pointer'></MdVideoCameraFront>
+          <button className='hover:text-blue-500 p-0 m-0' >Your Videos</button>
+        </div>
+        <div className='flex hover:text-red-600' onClick={logout}>
+          <IoIosLogOut className='h-[6vh] text-2xl hover:text-red-600  hover:cursor-pointer'></IoIosLogOut>
+          <button className='' >Log Out</button>
           </div>
-        </div>
-        <div className='h-[30vh] bg-slate-900 pt-10'>
-          <h1>{userData}</h1>
-          <h1>@{userName}</h1>
-          <h1>Subscribed to: {following}</h1>
-          <h1>Subscribers: {follower}</h1>
-      
-        </div>
-        <div className='h-[30vh] w-[60vw] bg-slate-900 pt-10 flex flex-col text-center'>
-          <Link to='/upload' className='text-white hover:text-blue-500'>Upload</Link>
-          <button className='hover:text-blue-500' onClick={()=>navigate('/yourvideo')}>your videos</button>
-          <button className='hover:text-blue-500' onClick={logout}>Log Out</button>
-        </div>
       </div>
-      <div className='flex md:flex-wrap flex-nowrap md:flex-row flex-col justify-evenly text-center bg-black text-white h-full pb-[10vh]'>
+      </div>
+      <div className='flex items-center md:flex-wrap md:flex-row flex-col justify-evenly text-center bg-black text-white h-full pb-[10vh]'>
         {videos.map((video, index) => (
-          <div key={index} onClick={()=>handleVideoClick(video._id)} className='h-[30vh] w-[20vw] hover:cursor-pointer my-10'>
-            <img src={video.thumbnail} alt="" className='h-[30vh] w-[20vw] rounded-2xl'></img>
+          <div key={index} onClick={()=>handleVideoClick(video._id)} className='h-[30vh] md:w-[20vw] w-[90vw] hover:cursor-pointer my-10'>
+            <img src={video.thumbnail} alt="" className='h-[30vh] w-[90vw] rounded-2xl'></img>
             <div className='flex flex-row'>
               <div className='pt-[2vh]'>
                 <img src={video.uploaderavatar} alt="" className='h-[7vh] w-[7vh] rounded-full'></img>
@@ -127,6 +127,7 @@ const Homepage = () => {
           </div>
         ))}
       </div>
+    </div>
     </>
   );
 };
