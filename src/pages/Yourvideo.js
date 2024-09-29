@@ -18,7 +18,7 @@ const Yourvideo = () => {
    useEffect(() => {
     const fetchData = async () => {
       try {
-         const response = await axios.get('https://backend-five-zeta-26.vercel.app/video/show',{
+         const response = await axios.get('https://backend-five-zeta-26.vercel.app/user/getuser',{
           withCredentials: true // Include cookies
         });
         console.log('response', response);
