@@ -129,10 +129,10 @@ const Videopage = () => {
 
   return (
     <>
-    <div className=' h-[90vh] w-full bg-black text-white '>
+     <div className=' h-[90vh] w-full bg-black text-white '>
       <video src={url} className='h-[90vh] w-full' controls autoPlay></video>
       <div className='flex flex-row pl-[1vw] bg-black'>
-      <div className='w-[60vw] flex flex-col pt-[2vh] '>
+      <div className='w-[50vw] flex flex-col pt-[2vh] '>
         <div className='text-2xl font-semibold'><h1>title:{title}</h1></div>
         <div id="sub" className='flex flex-row h-[10vh] gap-5 py-2'>
         <div>
@@ -152,10 +152,13 @@ const Videopage = () => {
       <div>
         <h1 className='text-xl font-bold'>comments</h1>
         <form onSubmit={submitcomment}>
+        <div className='flex md:flex-row flex-col'>
           <div className='flex flex-row'>
          <img alt="" className='w-[4vw] h-[4vw] rounded-full' src={avatar}></img>
         <input type='text' placeholder='Add a comment' value={content} className='w-[35vw] bg-black text-white border-black pl-2 focus:border-none focus:outline-none focus-visible:border-black' onChange={(e)=>{setcontent(e.target.value)}}> 
+
         </input>
+        </div>
         <button type='submit'>comment</button>
         </div>
         </form>
@@ -173,11 +176,11 @@ const Videopage = () => {
         ))}
       </div>
       </div>
-      <div className='w-[40vw] bg-slate-500'>
+      <div className='w-[50vw] bg-slate-500'>
       <div className='flex flex-col  text-center bg-black text-white h-full'>
         {videos.slice(-10).map((video, index) => (
-          <div key={index}  className='h-[30vh] w-[40vw] flex flex-row hover:cursor-pointer' onClick={()=>handleVideoClick(video._id)}>
-            <img src={video.thumbnail} alt="" className='h-[20vh] w-[15vw] rounded-2xl'></img>
+          <div key={index}  className='h-[30vh] w-[50vw] flex md:flex-row flex-col hover:cursor-pointer' onClick={()=>handleVideoClick(video._id)}>
+            <img src={video.thumbnail} alt="" className='h-[20vh] md:w-[15vw] w-[50vw] rounded-2xl'></img>
 
               <div className='flex flex-col pt-[1vh]'>
                 <h3>#{video.title}</h3>

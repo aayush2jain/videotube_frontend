@@ -32,32 +32,31 @@ const VideoUploadForm = () => {
       });
       navigate('/home');
     } catch (error) {
-      setError('Failed to upload the video. Please try again.');
+       setError('Failed to upload the video. Please try again with a lesser file size.');
       console.log(error);
     } finally {
       setLoading(false);
     }
   };
 
-  if (loading) return <div className=''>uploading... please wait</div>;
-
   return (
-    <form onSubmit={handleSubmit} className="max-w-xl mx-auto p-4 bg-white shadow-md rounded-lg" encType='multipart/form-data'>
+    <div className='bg-black py-[15vh] h-full'>
+    <form onSubmit={handleSubmit} className="max-w-xl  mx-auto p-4 bg-white shadow-md rounded-lg" encType='multipart/form-data'>
       {error && <div className="mb-4 text-red-500">{error}</div>}
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
+        <label className="block text-gray-700 text-xl font-medium mb-2">
           Title:
           <input 
             type="text" 
             value={title} 
             onChange={(e) => setTitle(e.target.value)} 
             required 
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="mt-1  block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </label>
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
+        <label className="block text-gray-700 text-xl font-medium mb-2">
           Description:
           <textarea 
             value={description} 
@@ -68,7 +67,7 @@ const VideoUploadForm = () => {
         </label>
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
+        <label className="block text-gray-700 text-xl font-medium mb-2">
           Duration:
           <input 
             type="text" 
@@ -80,7 +79,7 @@ const VideoUploadForm = () => {
         </label>
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
+        <label className="block text-gray-700 text-xl font-medium mb-2">
           Video File:
           <input 
             type="file" 
@@ -92,7 +91,7 @@ const VideoUploadForm = () => {
         </label>
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
+        <label className="block text-gray-700 text-xl font-medium mb-2">
           Thumbnail:
           <input 
             type="file" 
@@ -105,11 +104,20 @@ const VideoUploadForm = () => {
       </div>
       <button 
         type="submit" 
-        className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        className="w-full bg-blue-500 rounded-3xl hover:bg-blue-700 text-white font-bold py-2 px-4  focus:outline-none focus:shadow-outline"
       >
         Submit
       </button>
     </form>
+    {
+      loading &&(
+        <div className='text-center mx-auto text-xl font-semibold text-blue-400'>
+        <h1 >please wait uploading</h1>
+        <h1 className='animate-pulse'>...</h1>
+        </div>
+      )
+    }
+    </div>
   );
 };
 
