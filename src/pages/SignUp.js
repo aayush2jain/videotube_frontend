@@ -50,6 +50,7 @@ const Signup = () => {
                 <form onSubmit={submit} encType='multipart/form-data' className='mx-auto'>
                     {/* <input type='text' placeholder='UserName' onChange={(e) => setUsername(e.target.value)} className='py-[2vh] w-[10vw] mb-[2vh] mx-[2.5vw] sm:pl-4 rounded-xl bg-gray-200' /> */}
                     <input type='email' placeholder='Email' onChange={(e) => setEmail(e.target.value)} className='py-[2vh] md:w-[20vw] w-[60vw] md:h-[4vw] h-[8vh]  md:mb-[3vh] mb-[4vh] md:ml-[4.5vw] ml-[8vw] pl-4 rounded-xl bg-gray-200' />
+                     <input type='username' placeholder='Username' onChange={(e) => setUsername(e.target.value)} className='py-[2vh] md:w-[20vw] w-[60vw] md:h-[4vw] h-[8vh]  md:mb-[3vh] mb-[4vh] md:ml-[4.5vw] ml-[8vw] pl-4 rounded-xl bg-gray-200' />
                     <input type='password' placeholder='Password' onChange={(e) => setPassword(e.target.value)} className='py-[2vh]  md:w-[20vw]  w-[60vw] md:h-[4vw] h-[8vh]  md:mb-[23h] mb-[4vh] md:ml-[4.5vw]  ml-[8vw]  pl-4 rounded-xl bg-gray-200' />
                       <h1  className='mx-[3.5vw] pl-4 font-semibold text-lg'>ProfileImage:</h1>
                     <input type='file' id='profileImage' onChange={(e) => handleFileChange(e, setavatar)} className='py-[2vh]  md:w-[20vw] md:h-[4vw] h-[9vh]  w-[60vw] md:mb-[3vh] mb-[4vh] md:ml-[4.5vw]  ml-[8vw]  pl-4 rounded-xl bg-gray-200' />
