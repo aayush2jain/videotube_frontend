@@ -61,9 +61,9 @@ const Yourvideo = () => {
     <div className='bg-black'>
     <div className='w-full h-[20vw] bg-black relative object-cover '>
      <img src={coverImage} alt='' className='md:h-[20vw] h-[40vw] w-full'></img>
-        <div className='md:w-[13vw] flex md:h-[13vw] w-[20vw] h-[20vw] bg-black object-cover absolute md:top-[13vw] top-[30vw] left-[1vw]'>
+        <div className='md:w-[13vw] flex md:h-[13vw] w-[20vw] h-[20vw] bg-black absolute md:top-[13vw] top-[30vw] left-[1vw]'>
         <div className='object-cover  md:w-[13vw] md:h-[13vw] w-[20vw] h-[20vw] overflow-hidden rounded-full '>
-        <img src={avatar} alt='' className=' md:w-[13vw] md:h-[13vw] w-[20vw] h-[20vw] '></img>
+        <img src={avatar} alt='' className='object-cover md:w-[13vw] md:h-[13vw] w-[20vw] h-[20vw] rounded-full '></img>
         </div>
         <h1 className='ml-[3vw] text-white font-normal z-50 md:mt-[7vw] mt-[13vw]  text-2xl'>@{username}</h1>
         </div>
