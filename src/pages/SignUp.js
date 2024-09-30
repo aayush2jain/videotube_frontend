@@ -45,7 +45,7 @@ const Signup = () => {
     return (
         
         <div className='w-[100vw] h-[100vh] bg-black flex items-center justify-center'>
-            <div className='md:w-[30vw] h-[90vh] w-[80vw] md:h-[42vw] rounded-3xl flex flex-col bg-white'>
+            <div className='md:w-[30vw] h-[90vh] w-[80vw] md:h-[46vw] rounded-3xl flex flex-col bg-white'>
                 <h1 className='md:mt-[8vh] mt-[4vh]  my-4 text-xl  md:ml-[11vw] ml-[27vw] font-bold'>SIGN UP</h1>
                 <form onSubmit={submit} encType='multipart/form-data' className='mx-auto'>
                     {/* <input type='text' placeholder='UserName' onChange={(e) => setUsername(e.target.value)} className='py-[2vh] w-[10vw] mb-[2vh] mx-[2.5vw] sm:pl-4 rounded-xl bg-gray-200' /> */}
