@@ -61,7 +61,7 @@ const Yourvideo = () => {
     <div className='bg-black'>
     <div className='w-full h-[20vw] bg-black relative object-cover '>
      <img src={coverImage} alt='' className='md:h-[20vw] h-[40vw] w-full'></img>
-        <div className='md:w-[13vw] flex md:h-[13vw] w-[20vw] h-[20vw] bg-black absolute md:top-[13vw] top-[30vw] left-[1vw]'>
+        <div className='md:w-[13vw] flex md:h-[13vw] w-[20vw] h-[20vw] bg-black/100 absolute md:top-[13vw] top-[30vw] left-[1vw]'>
         
         <img src={avatar} alt='' className='md:w-[13vw] md:h-[13vw] w-[20vw] h-[20vw] rounded-full '></img>
         
