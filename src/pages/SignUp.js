@@ -39,7 +39,7 @@ const Signup = () => {
              }
         } catch (err) {
             if (err.response && err.response.status === 409) {
-                setError('User already registered with this email.');
+                setError('User already registered with this email or username.');
             } else {
                 setError('Something went wrong. Please try again later.');
             }
