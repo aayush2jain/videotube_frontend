@@ -34,10 +34,9 @@ const Signup = () => {
                     'Content-Type': 'multipart/form-data'
                 },
             });
-
-            if (response.status === 200) {
+             if(response){
                 navigate('/');
-            }
+             }
         } catch (err) {
             if (err.response && err.response.status === 409) {
                 setError('User already registered with this email.');
