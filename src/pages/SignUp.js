@@ -50,8 +50,8 @@ const Signup = () => {
     };
 
     return (
-        <div className="w-[100vw] h-[100vh] bg-black flex items-center justify-center">
-            <div className="md:w-[30vw] h-[90vh] w-[80vw] md:h-[46vw] rounded-3xl flex flex-col bg-white p-4">
+        <div className="w-[100vw] h-full bg-black flex items-center justify-center">
+            <div className="md:w-[30vw] h-full w-[80vw] md:h-full rounded-3xl flex flex-col bg-white p-4">
                 <h1 className="md:mt-[8vh] mt-[4vh] my-4 text-xl text-center font-bold">SIGN UP</h1>
                 {error && <p className="text-red-600 text-center mb-4">{error}</p>}
                 <form onSubmit={submit} encType="multipart/form-data" className="mx-auto">
@@ -59,18 +59,21 @@ const Signup = () => {
                         type="email"
                         placeholder="Email"
                         onChange={(e) => setEmail(e.target.value)}
+                        required
                         className="py-[2vh] md:w-[20vw] w-[60vw] md:h-[4vw] h-[8vh] mb-[4vh] mx-auto block rounded-xl bg-gray-200 pl-4 outline-none"
                     />
                     <input
                         type="text"
                         placeholder="Username"
                         onChange={(e) => setUsername(e.target.value)}
+                        required
                         className="py-[2vh] md:w-[20vw] w-[60vw] md:h-[4vw] h-[8vh] mb-[4vh] mx-auto block rounded-xl bg-gray-200 pl-4 outline-none"
                     />
                     <input
                         type="password"
                         placeholder="Password"
                         onChange={(e) => setPassword(e.target.value)}
+                        required
                         className="py-[2vh] md:w-[20vw] w-[60vw] md:h-[4vw] h-[8vh] mb-[4vh] mx-auto block rounded-xl bg-gray-200 pl-4 outline-none"
                     />
                     <label className="block font-semibold text-lg text-center mb-2">Profile Image:</label>
