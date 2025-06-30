@@ -16,55 +16,56 @@ const Homepage = () => {
   const [id, setid] = useState("");
   // const [owner,setowner] = useState();
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('https://backend-five-zeta-26.vercel.app/user/getuser',{
-          withCredentials: true // Include cookies
-        })
-        console.log('response', response);
-        setUserData(response.data.email);
-        setUserName(response.data.username);
-        setid(response.data._id);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get('https://backend-five-zeta-26.vercel.app/user/getuser',{
+  //         withCredentials: true // Include cookies
+  //       })
+  //       console.log('response', response);
+  //       setUserData(response.data.email);
+  //       setUserName(response.data.username);
+  //       setid(response.data._id);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      if (id) {
-        try {
-          const response = await axios.get(`https://backend-five-zeta-26.vercel.app/user/c/${id}`,{
-            withCredentials: true // Include cookies
-          });
-          console.log('hello', response);
+  // useEffect(() => {
+  //   const fetchUserData = async () => {
+  //     if (id) {
+  //       try {
+  //         const response = await axios.get(`https://backend-five-zeta-26.vercel.app/user/c/${id}`,{
+  //           withCredentials: true // Include cookies
+  //         });
+  //         console.log('hello', response);
 
-          setUserName(response.data.data.username);
-          setFollowing(response.data.data.channelsSubscribedToCount);
-          setFollower(response.data.data.subscribersCount);
-          setPicture(response.data.data.avatar);
-          // if(response.data.data.isSubscribed){
-          //   setsub
-          // }
-        } catch (error) {
-          console.error(error);
-        }
-      }
-    };
+  //         setUserName(response.data.data.username);
+  //         setFollowing(response.data.data.channelsSubscribedToCount);
+  //         setFollower(response.data.data.subscribersCount);
+  //         setPicture(response.data.data.avatar);
+  //         // if(response.data.data.isSubscribed){
+  //         //   setsub
+  //         // }
+  //       } catch (error) {
+  //         console.error(error);
+  //       }
+  //     }
+  //   };
 
-    fetchUserData();
-  }, [id]);
+  //   fetchUserData();
+  // }, [id]);
 
   useEffect(() => {
     const getAllVideos = async () => {
       try {
         const response = await axios.get('https://backend-five-zeta-26.vercel.app/video/all',{
-            withCredentials: true // Include cookies
+            withCredentials: true
+             // Include cookies
           });
         console.log('data', response.data.videos);
         setVideos(response.data.videos);

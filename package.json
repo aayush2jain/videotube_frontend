@@ -55,6 +55,5 @@
     "tailwindcss": "^3.4.4",
     "webpack": "^5.93.0",
     "webpack-cli": "^5.1.4"
-  },
-  "proxy": "https://backend-five-zeta-26.vercel.app/"
+  }
 }
