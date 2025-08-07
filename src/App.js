@@ -7,11 +7,11 @@ import Homepage from './pages/Homepage';
 import UploadVideo from './pages/UploadVideo';
 import Videopage from './pages/Videopage';
 import Yourvideo from './pages/Yourvideo';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function App() {
   return (
-
-  <>
+  <GoogleOAuthProvider clientId='551748810540-gta14e6bgmqmd56l8ls907odb0vguj3q.apps.googleusercontent.com'>
    <BrowserRouter>
    <Routes>
     <Route path="/signup" element={<Signup></Signup>}></Route>
@@ -22,7 +22,7 @@ function App() {
     <Route path="/yourvideo" element={<Yourvideo></Yourvideo>}></Route>
    </Routes>
    </BrowserRouter>
-  </>
+  </GoogleOAuthProvider>
   )
 }
 

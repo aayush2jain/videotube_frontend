@@ -1,32 +1,51 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 const Yourvideo = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  //new thing
   const [userid, setuserid] = useState('');
   const [username, setusername] = useState('');
   const [avatar, setavatar] = useState('');
   const [coverImage, setcoverImage] = useState('');
-    const handleVideoClick = (id) => {
+
+  const handleVideoClick = (id) => {
     navigate('/video', { state: { id } });
   };
 
-   useEffect(() => {
+  const handleDeleteVideo = async (id) => {
+    const confirmed = window.confirm("Are you sure you want to delete this video?");
+  if (!confirmed) return;
+    try {
+      await axios.delete(`https://newrepo-eight-theta.vercel.app/video/delete/${id}`, {
+        withCredentials: true,
+      });
+
+      // Remove the video from UI
+      setVideos((prev) => prev.filter((video) => video._id !== id));
+    } catch (err) {
+      console.error('Error deleting video:', err);
+      alert('Failed to delete the video.');
+    }
+  };
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
-         const response = await axios.get('https://backend-five-zeta-26.vercel.app/user/getuser',{
-          withCredentials: true // Include cookies
+        const response = await axios.get('https://newrepo-eight-theta.vercel.app/user/getuser', {
+          withCredentials: true,
         });
-        console.log('response', response);
         setavatar(response.data.avatar);
         setcoverImage(response.data.coverImage);
         setusername(response.data.username);
         setuserid(response.data._id);
       } catch (error) {
+        if (error.response && error.response.status === 401) {
+          navigate('/signin');
+        }
         console.error(error);
       }
     };
@@ -34,15 +53,14 @@ const Yourvideo = () => {
     fetchData();
   }, []);
 
-
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await axios.get('https://backend-five-zeta-26.vercel.app/video/show',{
-          withCredentials:true
+        const response = await axios.get('https://newrepo-eight-theta.vercel.app/video/show', {
+          withCredentials: true,
         });
-        console.log("data",response)
         setVideos(response.data);
+        console.log('Fetched videos:', response.data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -57,40 +75,74 @@ const Yourvideo = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <>
-    <div className='bg-black'>
-    <div className='w-full h-[20vw] bg-black relative object-cover '>
-     <img src={coverImage} alt='' className='md:h-[20vw] h-[40vw] w-full'></img>
+    <div className='bg-black min-h-screen'>
+      {/* Cover and Avatar */}
+      <div className='w-full h-[20vw] bg-black relative '>
+        <div className='md:w-full md:h-[20vw] w-[100vw] h-[40vw] bg-black relative'>
+        <img src={coverImage} alt='' className='h-full w-full object-cover' />
+        </div>
         <div className='md:w-[13vw] flex md:h-[13vw] w-[20vw] h-[20vw] bg-black/0 absolute md:top-[13vw] top-[30vw] left-[1vw]'>
-        
-        <img src={avatar} alt='' className='md:w-[13vw] md:h-[13vw] w-[20vw] h-[20vw] rounded-full '></img>
-        
-        <h1 className='ml-[3vw] text-white font-normal z-50 md:mt-[7vw] mt-[13vw]  text-2xl'>@{username}</h1>
+          <img src={avatar} alt='' className='md:w-[13vw] md:h-[13vw] w-[20vw] h-[20vw] rounded-full' />
+          <h1 className='ml-[3vw] text-white font-normal z-50 md:mt-[7vw] mt-[13vw] text-2xl'>@{username}</h1>
         </div>
       </div>
-    
-    <div className='flex md:flex-wrap mt-[20vh] flex-col md:flex-row bg-black text-white justify-around items-center pb-[10vh] '>
-    
-        {videos.map((video, index) => (
-          <div key={index} className='h-[30vh] md:w-[20vw] w-[90vw]  bg-black rounded-2xl my-10 ' onClick={()=>handleVideoClick(video._id)}>
-            <img src={video.thumbnail} alt="" className='h-[30vh] md:w-[20vw] w-[90vw] rounded-2xl'></img>
-            <div className='flex flex-row pt-2'>
-              <div>
-                <img src={video.uploaderavatar} alt="" className='h-[7vh] w-[7vh] rounded-full'></img>
-              </div>
-              <div className='flex flex-col pl-10'>
-                <h3>{video.title}</h3>
-                <h3>{video.uploadername}</h3>
-                </div>
-            
-            </div>
-            {/* Add more details as needed */}
+
+     {/* Video Grid */}
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-[16vh] md:mt-[10vh] py-12 px-6">
+  {videos.map((video, index) => (
+    <div
+      key={index}
+      onClick={() => handleVideoClick(video._id)}
+      className="group bg-neutral-900 hover:bg-neutral-800 transition-all duration-300 rounded-xl shadow-md hover:shadow-xl cursor-pointer"
+    >
+      {/* Thumbnail */}
+      <div className="relative h-[24vh] overflow-hidden rounded-t-xl">
+        <img
+          loading="lazy"
+          src={video.thumbnail}
+          alt="Video thumbnail"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+
+      {/* Info */}
+      <div className="flex items-start gap-3 p-3 relative">
+        <img
+          src={video.uploaderavatar}
+          alt="Uploader avatar"
+          className="h-10 w-10 rounded-full border-2 border-cyan-600 object-cover"
+        />
+
+        <div className="w-full text-left">
+          <h3 className="text-white font-medium text-sm line-clamp-2 break-words">
+            {video.title}
+          </h3>
+          <div className="flex justify-between text-xs text-gray-400 mt-1">
+            <span>@{video.uploadername}</span>
+            <span>{video.views} views</span>
           </div>
-        ))}
+        </div>
+        {/* Delete Button */}
+      {video.owner === userid && (
+        <div className="absolute top-2 right-2 z-10">
+          <button
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent navigation
+              handleDeleteVideo(video._id);
+            }}
+            title="Delete Video"
+            className="text-xs px-2 py-1 bg-red-600 hover:bg-red-700 rounded-full text-white shadow-sm transition"
+          >
+            Delete
+          </button>
+        </div>
+      )}
+      </div>
+    </div>
+  ))}
+</div>
 
     </div>
-    </div>
-    </>
   );
 };
 

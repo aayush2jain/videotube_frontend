@@ -22,7 +22,7 @@ const Videopage = () => {
         const formData = new FormData();
         formData.append('content',content);       
         try {
-            await axios.post(`http://localhost:4000/comment/c/${videoId}`, formData, {
+            await axios.post(`https://newrepo-eight-theta.vercel.app/comment/c/${videoId}`, formData, {
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -39,7 +39,7 @@ const Videopage = () => {
         if(flag)
         {
         try {
-            await axios.post(`http://localhost:4000/sub/c/${videoId}`, {
+            await axios.post(`https://newrepo-eight-theta.vercel.app/sub/c/${videoId}`, {
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -64,7 +64,7 @@ const Videopage = () => {
     useEffect(()=>{
         const getvideo= async()=>{
         try {
-          const response = await axios.get(`http://localhost:4000/video/c/${id}`,{
+          const response = await axios.get(`https://newrepo-eight-theta.vercel.app/video/c/${id}`,{
             withCredentials: true // Include cookies
           });
           console.log('bhai videodetails', response);
@@ -89,7 +89,7 @@ const Videopage = () => {
       useEffect(() => {
     const getAllVideos = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/video/all',{
+        const response = await axios.get('https://newrepo-eight-theta.vercel.app/video/all',{
           withCredentials: true // Include cookies
         });
         console.log('data', response.data.videos);
@@ -106,7 +106,7 @@ const Videopage = () => {
         useEffect(()=>{
         const getcomment= async()=>{
         try {
-          const response = await axios.get(`http://localhost:4000/comment/video/c/${id}`,{
+          const response = await axios.get(`https://newrepo-eight-theta.vercel.app/comment/video/c/${id}`,{
             withCredentials: true // Include cookies
           });
           console.log('bhai commentdetailsdetails', response);

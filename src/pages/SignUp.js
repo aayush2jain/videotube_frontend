@@ -29,7 +29,7 @@ const Signup = () => {
         formData.append('avatar', avatar);
 
         try {
-            const response = await axios.post("https://backend-five-zeta-26.vercel.app/user/register", formData, {
+            const response = await axios.post("https://newrepo-eight-theta.vercel.app/user/register", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },
@@ -49,82 +49,104 @@ const Signup = () => {
     };
 
     return (
-        <div className="w-[100vw] h-full bg-black flex items-center justify-center">
-            <div className="md:w-[30vw] h-full w-[80vw] md:h-full rounded-3xl flex flex-col bg-white p-4">
-                <h1 className="md:mt-[8vh] mt-[4vh] my-4 text-xl text-center font-bold">SIGN UP</h1>
-                {error && <p className="text-red-600 text-center mb-4">{error}</p>}
-                <form onSubmit={submit} encType="multipart/form-data" className="mx-auto">
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        className="py-[2vh] md:w-[20vw] w-[60vw] md:h-[4vw] h-[8vh] mb-[4vh] mx-auto block rounded-xl bg-gray-200 pl-4 outline-none"
-                    />
-                    <input
-                        type="text"
-                        placeholder="Username"
-                        onChange={(e) => setUsername(e.target.value)}
-                        required
-                        className="py-[2vh] md:w-[20vw] w-[60vw] md:h-[4vw] h-[8vh] mb-[4vh] mx-auto block rounded-xl bg-gray-200 pl-4 outline-none"
-                    />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        className="py-[2vh] md:w-[20vw] w-[60vw] md:h-[4vw] h-[8vh] mb-[4vh] mx-auto block rounded-xl bg-gray-200 pl-4 outline-none"
-                    />
-                    <label className="block font-semibold text-lg text-center mb-2">Profile Image:</label>
-                    <input
-                        type="file"
-                        onChange={(e) => handleFileChange(e, setAvatar)}
-                        className="py-[2vh] md:w-[20vw] w-[60vw] md:h-[4vw] h-[9vh] mb-[4vh] mx-auto block rounded-xl bg-gray-200 pl-4 outline-none"
-                        required
-                    />
-                    <label className="block font-semibold text-lg text-center mb-2">Cover Image:</label>
-                    <input
-                        type="file"
-                        onChange={(e) => handleFileChange(e, setCoverImage)}
-                        className="py-[2vh] md:w-[20vw] w-[60vw] md:h-[4vw] h-[9vh] mb-[4vh] mx-auto block rounded-xl bg-gray-200 pl-4 outline-none"
-                        required
-                    />
-                    <button
-                        type="submit"
-                        className="w-[60vw] md:w-[20vw] py-3 mx-auto block text-xl bg-black text-white rounded-xl flex justify-center items-center"
-                        disabled={loading}
-                    >
-                        {loading ? (
-                            <svg
-                                className="animate-spin h-6 w-6 text-white"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                            >
-                                <circle
-                                    className="opacity-25"
-                                    cx="12"
-                                    cy="12"
-                                    r="10"
-                                    stroke="currentColor"
-                                    strokeWidth="4"
-                                ></circle>
-                                <path
-                                    className="opacity-75"
-                                    fill="currentColor"
-                                    d="M4 12a8 8 0 018-8v8h8a8 8 0 01-8 8V12H4z"
-                                ></path>
-                            </svg>
-                        ) : (
-                            'Sign up'
-                        )}
-                    </button>
-                </form>
-                <a href="/" className="text-center mt-4 underline text-black decoration-black">
-                    Already Registered? Log in
-                </a>
-            </div>
-        </div>
+       <div className="w-full min-h-screen bg-black flex items-center justify-center px-4">
+  <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-6 md:p-8">
+    <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Create an Account</h1>
+
+    {error && (
+      <p className="text-red-600 text-center font-medium mb-4">{error}</p>
+    )}
+
+    <form onSubmit={submit} encType="multipart/form-data" className="space-y-5">
+      <div>
+        <input
+          type="email"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          className="w-full px-4 py-3 bg-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Username"
+          onChange={(e) => setUsername(e.target.value)}
+          required
+          className="w-full px-4 py-3 bg-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+      <div>
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          className="w-full px-4 py-3 bg-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <div>
+        <label className="block text-gray-700 font-semibold text-sm mb-2">Profile Image</label>
+        <input
+          type="file"
+          onChange={(e) => handleFileChange(e, setAvatar)}
+          required
+          className="w-full file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 bg-gray-100 rounded-xl cursor-pointer"
+        />
+      </div>
+
+      <div>
+        <label className="block text-gray-700 font-semibold text-sm mb-2">Cover Image</label>
+        <input
+          type="file"
+          onChange={(e) => handleFileChange(e, setCoverImage)}
+          required
+          className="w-full file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 bg-gray-100 rounded-xl cursor-pointer"
+        />
+      </div>
+
+      <div>
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full py-3 bg-black text-white text-lg font-semibold rounded-xl flex justify-center items-center hover:bg-gray-900 transition"
+        >
+          {loading ? (
+            <svg
+              className="animate-spin h-6 w-6 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8v8h8a8 8 0 01-8 8V12H4z"
+              ></path>
+            </svg>
+          ) : (
+            'Sign Up'
+          )}
+        </button>
+      </div>
+    </form>
+
+    <div className="text-center mt-5">
+      <a href="/" className="text-blue-600 hover:underline font-medium text-sm">
+        Already Registered? Log in
+      </a>
+    </div>
+  </div>
+</div>
     );
 };
 

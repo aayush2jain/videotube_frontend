@@ -24,7 +24,7 @@ const VideoUploadForm = () => {
     formData.append('thumbnail', thumbnail);
 
     try {
-      await axios.post("https://backend-five-zeta-26.vercel.app/video/upload", formData, {
+      await axios.post("https://newrepo-eight-theta.vercel.app/video/upload", formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
@@ -40,83 +40,100 @@ const VideoUploadForm = () => {
   };
 
   return (
-    <div className='bg-black py-[15vh] h-full'>
-    <form onSubmit={handleSubmit} className="max-w-xl  mx-auto p-4 bg-white shadow-md rounded-lg" encType='multipart/form-data'>
-      {error && <div className="mb-4 text-red-500">{error}</div>}
-      <div className="mb-4">
-        <label className="block text-gray-700 text-xl font-medium mb-2">
-          Title:
-          <input 
-            type="text" 
-            value={title} 
-            onChange={(e) => setTitle(e.target.value)} 
-            required 
-            className="mt-1  block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          />
-        </label>
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 text-xl font-medium mb-2">
-          Description:
-          <textarea 
-            value={description} 
-            onChange={(e) => setDescription(e.target.value)} 
-            required 
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          />
-        </label>
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 text-xl font-medium mb-2">
-          Duration:
-          <input 
-            type="text" 
-            value={duration} 
-            onChange={(e) => setDuration(e.target.value)} 
-            required 
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          />
-        </label>
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 text-xl font-medium mb-2">
-          Video File:
-          <input 
-            type="file" 
-            accept="video/*" 
-            onChange={(e) => setVideoFile(e.target.files[0])} 
-            required 
-            className="mt-1 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer focus:outline-none"
-          />
-        </label>
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 text-xl font-medium mb-2">
-          Thumbnail:
-          <input 
-            type="file" 
-            accept="image/*" 
-            onChange={(e) => setThumbnail(e.target.files[0])} 
-            required 
-            className="mt-1 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer focus:outline-none"
-          />
-        </label>
-      </div>
-      <button 
-        type="submit" 
-        className="w-full bg-blue-500 rounded-3xl hover:bg-blue-700 text-white font-bold py-2 px-4  focus:outline-none focus:shadow-outline"
+    <div className="bg-black min-h-screen py-[15vh] px-4 flex items-start justify-center">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-xl bg-white p-6 rounded-lg shadow-md space-y-6"
+        encType="multipart/form-data"
       >
-        Submit
-      </button>
-    </form>
-    {
-      loading &&(
-        <div className='text-center mx-auto text-xl font-semibold text-blue-400'>
-        <h1 >please wait uploading</h1>
-        <h1 className='animate-pulse'>...</h1>
+        <h2 className="text-2xl font-bold text-center text-gray-800">Upload Video</h2>
+
+        {error && <div className="text-red-500 font-medium text-center">{error}</div>}
+
+        <div>
+          <label htmlFor="title" className="block text-lg font-medium text-gray-700 mb-1">
+            Title
+          </label>
+          <input
+            id="title"
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+          />
         </div>
-      )
-    }
+
+        <div>
+          <label htmlFor="description" className="block text-lg font-medium text-gray-700 mb-1">
+            Description
+          </label>
+          <textarea
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm resize-none focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="duration" className="block text-lg font-medium text-gray-700 mb-1">
+            Duration
+          </label>
+          <input
+            id="duration"
+            type="text"
+            value={duration}
+            onChange={(e) => setDuration(e.target.value)}
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="videoFile" className="block text-lg font-medium text-gray-700 mb-1">
+            Video File
+          </label>
+          <input
+            id="videoFile"
+            type="file"
+            accept="video/*"
+            onChange={(e) => setVideoFile(e.target.files[0])}
+            required
+            className="w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="thumbnail" className="block text-lg font-medium text-gray-700 mb-1">
+            Thumbnail Image
+          </label>
+          <input
+            id="thumbnail"
+            type="file"
+            accept="image/*"
+            onChange={(e) => setThumbnail(e.target.files[0])}
+            required
+            className="w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700"
+          />
+        </div>
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-3xl transition duration-200"
+        >
+          {loading ? 'Uploading...' : 'Submit'}
+        </button>
+
+        {loading && (
+          <div className="text-center mt-4 text-blue-500 font-medium text-lg">
+            <div className="inline-block h-6 w-6 animate-spin rounded-full border-4 border-blue-400 border-t-transparent"></div>
+            <p className="mt-2 animate-pulse">Uploading, please wait...</p>
+          </div>
+        )}
+      </form>
     </div>
   );
 };
