@@ -60,23 +60,23 @@ const Yourvideo = () => {
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   const fetchVideos = async () => {
-  //     try {
-  //       const response = await axios.get('https://newrepo-eight-theta.vercel.app/video/show', {
-  //         withCredentials: true,
-  //       });
-  //       setVideos(response.data);
-  //       console.log('Fetched videos:', response.data);
-  //     } catch (error) {
-  //       setError(error.message);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const response = await axios.get('https://newrepo-eight-theta.vercel.app/video/show', {
+          withCredentials: true,
+        });
+        setVideos(response.data);
+        console.log('Fetched videos:', response.data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  //   fetchVideos();
-  // }, []);
+    fetchVideos();
+  }, []);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
