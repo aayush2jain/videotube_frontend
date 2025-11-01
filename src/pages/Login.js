@@ -24,6 +24,7 @@ const Login = () => {
         setmessage(response.data.message);
       } else if (response.status === 200) {
         setmessage('');
+        console.log('Login successful:', response.data);
         navigate('/');
       }
     } catch (error) {
@@ -34,35 +35,32 @@ const Login = () => {
   };
 
 const handleGoogleLogin = async (credentialResponse) => {
-  console.log('Google Login Response:', credentialResponse);
+  console.log("Google Login Response:", credentialResponse);
+
   try {
+    // Step 1: Send token to backend for verification
     const res = await axios.post(
-      'https://newrepo-eight-theta.vercel.app/auth/google',
-      {
-        token: credentialResponse.credential, // ✅ Make sure it's sent in body
-      },
+      "https://newrepo-eight-theta.vercel.app/auth/google",
+      { token: credentialResponse.credential },
       { withCredentials: true }
     );
+
+    // Step 2: If backend returns 200, login success
     if (res.status === 200) {
-      const response = await axios.post(
-        'https://newrepo-eight-theta.vercel.app/user/google',
-        {
-          email: res.data.email,
-          name: res.data.name,
-          picture: res.data.picture,
-        },
-        { withCredentials: true }
-      );
-      if (response.status === 200) {
-        setmessage('');
-        navigate('/');
-      } else {
-        setmessage('Google login failed. Please try again.');
-      }
+      console.log("Google Login successful:", res.data);
+
+      // Optional: store user data in localStorage or context
+      localStorage.setItem("user", JSON.stringify(res.data));
+
+      // Step 3: Redirect to homepage
+      navigate("/");
+    } else {
+      console.log("Google Login failed:", res.data);
+    
     }
   } catch (err) {
-    console.error(err);
-  }
+    console.error("Error during Google login:", err);
+    }
 };
 
 

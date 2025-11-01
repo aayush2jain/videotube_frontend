@@ -36,40 +36,44 @@ const Yourvideo = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://newrepo-eight-theta.vercel.app/user/getuser', {
+          headers: { 'Content-Type': 'application/json' },
           withCredentials: true,
         });
+        console.log('User data:', response.data);
         setavatar(response.data.avatar);
         setcoverImage(response.data.coverImage);
         setusername(response.data.username);
         setuserid(response.data._id);
       } catch (error) {
         if (error.response && error.response.status === 401) {
+          console.error(
+          "something wrong here",error);
           navigate('/signin');
         }
-        console.error(error);
+        
       }
     };
 
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        const response = await axios.get('https://newrepo-eight-theta.vercel.app/video/show', {
-          withCredentials: true,
-        });
-        setVideos(response.data);
-        console.log('Fetched videos:', response.data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchVideos = async () => {
+  //     try {
+  //       const response = await axios.get('https://newrepo-eight-theta.vercel.app/video/show', {
+  //         withCredentials: true,
+  //       });
+  //       setVideos(response.data);
+  //       console.log('Fetched videos:', response.data);
+  //     } catch (error) {
+  //       setError(error.message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchVideos();
-  }, []);
+  //   fetchVideos();
+  // }, []);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
