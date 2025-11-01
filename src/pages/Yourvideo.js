@@ -39,6 +39,9 @@ const Yourvideo = () => {
           headers: { 'Content-Type': 'application/json' },
           withCredentials: true,
         });
+        if(response.status===200){
+          setLoading(false);
+        }
         console.log('User data your video:', response.data);
         setavatar(response.data.avatar);
         setcoverImage(response.data.coverImage);
