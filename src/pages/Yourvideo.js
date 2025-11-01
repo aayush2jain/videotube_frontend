@@ -39,7 +39,7 @@ const Yourvideo = () => {
           headers: { 'Content-Type': 'application/json' },
           withCredentials: true,
         });
-        console.log('User data:', response.data);
+        console.log('User data your video:', response.data);
         setavatar(response.data.avatar);
         setcoverImage(response.data.coverImage);
         setusername(response.data.username);
